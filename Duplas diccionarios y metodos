@@ -1,0 +1,30 @@
+class Persona:
+	#Constructor
+	def __init__(self,edad, nombre): #self es requerido para entrar a los metodos dentro de la clase
+		self.edad=edad #atributos
+		self.nombre=nombre
+		print("se ha creado a", self.nombre, "de", self.edad, "años")
+
+	#metodos
+	def speak(self, palabras = "No tengo palabras"): #Se puede o no agregar un valor predefinido
+		print(self.nombre, ": ", palabras)
+
+
+	#el * muestra que ese parametro, recibirá una dupla
+	def hablar(self, *palabras):
+		for frase in palabras:
+			print(self.nombre, ": ", frase)
+
+								#El ** indica, que recibirá un diccionario cómo valor
+	def hablar_diccionario(self, **palabras):
+		for frase in palabras:
+			print(self.nombre, ":", palabras [frase])
+
+juan = Persona(18,"Juan")
+juan.speak()
+juan.speak("Speak")
+luis=Persona(18,"Luis")
+luis.hablar("hola, estoy hablando", "Este soy yo, Luis")
+juan.hablar("Hola, estoy hablando", "Este soy yo Juan")
+print("")
+juan.hablar_diccionario(t1="Hola, estoy hablando", t2="Diccionario juan")
