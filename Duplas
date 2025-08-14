@@ -1,0 +1,17 @@
+class Persona:
+	#Constructor
+	def __init__(self,edad, nombre): #self es requerido para entrar a los metodos dentro de la clase
+		self.edad=edad #atributos
+		self.nombre=nombre
+		print("se ha creado a", self.nombre, "de", self.edad, "años")
+
+	#metodos
+	#el * muestra que ese parametro, recibirá una dupla
+	def hablar (self, *palabras):
+		for frase in palabras:
+			print(self.nombre, ": ", frase)
+
+juan = Persona(18,"Juan")
+juan.hablar("Hola, estoy hablando", "Este soy yo")
+luis=Persona(18,"Luis")
+juan.hablar("hola, estoy hablando", "Este soy yo")
