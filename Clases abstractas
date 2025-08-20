@@ -1,0 +1,49 @@
+#Clases abstractas
+from abc import ABCMeta,abstractmethod
+class Persona:
+	__metaclass__=ABCMeta	#La clase persona es abstracta
+	def __init__(self,edad, nombre):
+		self.edad=edad #atributos
+		self.nombre=nombre
+		print("se ha creado a", self.nombre, "de", self.edad, "años")
+
+	@abstractmethod	#Se indica el método hablar cómo abstracto
+	def hablar(self, *palabras):
+		for frase in palabras:
+			print(self.nombre, ": ", frase)
+	pass #indica el fin del método
+
+
+
+
+class Deportista(Persona):
+	#Sobre escritura del Constructor
+	def __init__(self,edad, nombre, deporte):
+		self.edad=edad #atributos
+		self.nombre=nombre
+		self.__deporte=deporte
+		print("se ha creado a", self.nombre, "de", self.edad, "años")
+
+	#metodos
+	def practicarDeporte(self):
+		print(self.nombre,":Voy a practicar")
+
+	#Para ver la funcion de un atributo privado:
+	def verMideporte(self):
+		return self.__deporte
+
+	def hablar(self, *palabras):
+		for frase in palabras:
+			print(self.nombre, ":", frase)
+
+juan = Persona(18,"Juan")
+juan.hablar("Hola, este soy yo, Juan", "Estoy hablando")
+luis = Deportista (20,"luis","natacion")
+luis.hablar("Hola, este soy yo, Luis")
+luis.practicarDeporte()
+#Error: print("Luis practica deporte:", luis.__deporte)
+print("Luis practica", luis.verMideporte())
+luis.hablar("Hola")
+
+
+
