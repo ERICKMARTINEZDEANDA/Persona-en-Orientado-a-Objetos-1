@@ -1,0 +1,40 @@
+class Persona:
+	#Constructor
+	def __init__(self,edad, nombre):
+		self.edad=edad #atributos
+		self.nombre=nombre
+		print("se ha creado a", self.nombre, "de", self.edad, "años")
+
+
+	#metodos
+	def hablar(self, *palabras):
+		for frase in palabras:
+			print(self.nombre, ": ", frase)
+
+
+
+class Deportista(Persona):
+	#Sobre escritura del Constructor
+	def __init__(self,edad, nombre, deporte):
+		self.edad=edad #atributos
+		self.nombre=nombre
+		#En Python no existen modificadores de acceso formales
+		#En Python la ocultacion de atributos y métodos se usan __
+		self.__deporte=deporte #Ahora el atributo deporte, es privado
+		print("se ha creado a", self.nombre, "de", self.edad, "años")
+
+	#metodos
+	def practicarDeporte(self):
+		print(self.nombre,":Voy a practicar")
+
+	#Para ver la funcion de un atributo privado:
+	def verMideporte(self):
+		return self.__deporte
+
+juan = Persona(18,"Juan")
+juan.hablar("Hola, este soy yo, Juan", "Estoy hablando")
+luis = Deportista (20,"luis","natacion")
+luis.hablar("Hola, este soy yo, Luis")
+luis.practicarDeporte()
+#Error: print("Luis practica deporte:", luis.__deporte)
+print("Luis practica", luis.verMideporte())
