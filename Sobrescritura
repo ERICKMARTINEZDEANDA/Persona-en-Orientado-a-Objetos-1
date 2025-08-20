@@ -1,0 +1,36 @@
+class Persona:
+	#Constructor
+	def __init__(self,edad, nombre): #self es requerido para entrar a los metodos dentro de la clase
+		self.edad=edad #atributos
+		self.nombre=nombre
+		print("se ha creado a", self.nombre, "de", self.edad, "años")
+
+
+	#metodos
+	def hablar(self, *palabras):
+		for frase in palabras:
+			print(self.nombre, ": ", frase)
+
+
+
+	#Herencia de la clase Persona
+class Deportista(Persona):
+	#Sobre escritura del Constructor
+	def __init__(self,edad, nombre, deporte):
+		self.edad=edad #atributos
+		self.nombre=nombre
+		self.deporte=deporte
+		print("se ha creado a", self.nombre, "de", self.edad, "años")
+
+	#metodos
+	def practicarDeporte(self):
+		print(self.nombre,":Voy a practicar")
+
+
+
+juan = Persona(18,"Juan")
+juan.hablar("Hola, este soy yo, Juan", "Estoy hablando")
+luis = Deportista (20,"luis","natacion")
+luis.hablar("Hola, este soy yo, Luis")
+luis.practicarDeporte()
+print("Luis practica deporte:", luis.deporte)
